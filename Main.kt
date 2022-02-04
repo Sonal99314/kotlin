@@ -1,9 +1,8 @@
 import java.util.Scanner
 
-fun main(){
-    println("hello world")
-    variables()
-}
+
+
+
 fun variables(){
     val firstName: String="sonal"
     println(firstName)
@@ -181,4 +180,107 @@ fun labelledBreakAndContinue(){
         }
     }
 }
+fun exampleFunction(){
+    val number1: Int=10
+    val number2: Int=20
+    sum(number1,number2)
+    // sum(num2=number1,num1=number2)
+    student(age=25, name="Ramesh")
+}
+// Unit is default return type
+fun sum(num1 : Int,num2 :Int) : Int{
+    return num1+num2
+}
+//fun student(name: String="name",age: Int)
+//student()
+fun student(name: String,age: Int){
+    println(name)
+    println(age)
+}
+fun factorial(num: Int): Int{
+    if (num==1){
+        return num
+    }
+    else{
+        return num*factorial(num-1)
+    }
+}
+fun factorialTail(num: Int,value: Int=1){
+    if (num==1){
+        print(num)
+    }
+    factorialTail(num-1,value*num)
+}
+/*
+factorial(3)
+return num*factorial(2)
+        return num* factorial(1)
+                         return
+ */
+fun getName() :String="sonal"
+//Anonymous
+fun exampleAnonymous(){
+    val sum=fun(num1: Int,num2:Int): Int=num1+num2
+    sum(10,20)
+}
+//----Collections
+fun collections(){
+    val arrayExample= arrayOf("Bangalore","Chennai")
+    val citiesList= listOf("Patna","pune").toMutableList()
+    val citiesList2= mutableListOf("kashmir","jaipur")
+    citiesList2.add("Abd")
+    citiesList2.map{
+        print(it)
+    }
+    for (city in citiesList2){
+        print(city)
+    }
+    val stateCapitals= mapOf("a" to "b")    //imp
+    stateCapitals.forEach{
+        println(it.key)
+    }
+}
+// access modifiers
+//public,protected,private,internal(inside the package:like in src)
+
+class Employee constructor(var fName: String,val lName:String){
+    //val firstName: String=fName
+    // val lastName:String=lName
+    var gender:String?=null
+    get() {
+        //return field
+        return "output"
+        //return gender?.uppercase()
+        //return field?.uppercase()
+    }
+    set(value){
+        field=value?.lowercase()
+    }
+    fun printEmpDetails(){
+        println("abc")
+    }
+    init {
+        println("inside the init block")
+    }
+    //constructor (firstName: String,lastName: String,gender:String){
+      //  this.gender=gender
+  //}
+    infix fun setName(name: String){
+        this.fName=name
+    }
+}
+
+fun main(){
+    println("hello world")
+    val employee :Employee=Employee("Ramesh","kumar")
+    //val employee2 :Employee=Employee("Ramesh","kumar", gender = "male")
+    print(employee.lName)
+    print(employee.fName)
+    //employee.lName="suresh"
+    employee.fName="suresh"
+    println(employee.gender)
+    employee.gender="Male"
+    employee.printEmpDetails()
+}
+
 
